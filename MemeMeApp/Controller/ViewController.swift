@@ -17,8 +17,16 @@ class ViewController: UIViewController {
         .font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
     ]
     
+    var memes = [Meme]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // these items should be disabled until it makes sense to become active
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(clearImage))
+        navigationItem.title = "MemeMe"
+        
         
         topTextField.delegate = self
         bottomTextField.delegate = self
@@ -26,12 +34,18 @@ class ViewController: UIViewController {
         
         // TODO: make it all CAPS
         topTextField.text = "TOP"
-        // FIXME: Alignment stopped working
         topTextField.defaultTextAttributes = textAttributes
         topTextField.textAlignment = .center
+        topTextField.layer.backgroundColor = UIColor.clear.cgColor
+        //topTextField.borderStyle = .none
         
-        // TODO: customize this text field
         bottomTextField.text = "BOTTOM"
+        bottomTextField.defaultTextAttributes = textAttributes
+        bottomTextField.textAlignment = .center
+    }
+    
+    func setNavigationBar() {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +76,8 @@ class ViewController: UIViewController {
         pickerController.sourceType = .camera
         present(pickerController, animated: true, completion: nil)
     }
+    
+
     
     //MARK: - Keyboard adjustments
     // how does that guy handle this. I think I need deeper understanding of notifications
@@ -96,7 +112,9 @@ class ViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y = -getKeyboardHeight(notification)
+        if bottomTextField.isEditing {
+            view.frame.origin.y = -getKeyboardHeight(notification)
+        }
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
@@ -109,7 +127,72 @@ class ViewController: UIViewController {
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
+    
+    //MARK: Saving Meme
+    
+    func save() {
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
+        memes.append(meme)
+        
+    }
+    
+    func generateMemedImage() -> UIImage {
+        
+        // TODO: Hide toolbar and navbar
+        
+        // Render view to an image
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // TODO: Show toolbar and navbar
+        
+        return memedImage
+    }
+    
+    @objc func shareImage() {
+        // need to check for image to share
+        let defaultText = "Look at this awesome meme"
+        let image = generateMemedImage()
+        
+        let activityController = UIActivityViewController(activityItems: [defaultText, image], applicationActivities: [])
+        
+        activityController.completionWithItemsHandler = { (actionType, completed, returnedItems, activityError) in
+            if !completed {
+                return
+                
+            } else {
+                self.save()
+                print(self.memes)
+            }
+        }
+        
+        // without this code iPad crashes - needs to be tested
+        //activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        self.present(activityController, animated: true, completion: nil)
+    }
+    
+    @objc func clearImage() {
+        self.imageView.image = nil
+        bottomTextField.text = "BOTTOM"
+        topTextField.text = "TOP"
+        
+    }
+    
 }
+
+// add shared button with activity view that allow sharing +/-
+// enable shared button until meme is finished (check imageView has image)
+
+//generate a memed image
+//define an instance of the ActivityViewController
+//pass the ActivityViewController a memedImage as an activity item
+//present the ActivityViewController
+//call save meme method in completionHandler of ActivityVC
+//dismiss Activity View?
+//allow to save image in galery in plist
+
 
 extension ViewController: UITextFieldDelegate {
     
@@ -136,9 +219,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
         dismiss(animated: true) {
-            print("canceled")
         }
     }
 }
