@@ -77,7 +77,13 @@ class ViewController: UIViewController {
         present(pickerController, animated: true, completion: nil)
     }
     
-
+    //TODO: - Make it correct
+    func configureBarButtonItems() {
+        if imageView.image == nil {
+            navigationItem.leftBarButtonItem?.isEnabled = false
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
     
     //MARK: - Keyboard adjustments
     // how does that guy handle this. I think I need deeper understanding of notifications
