@@ -19,17 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CfJ-Ry-Jwm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vZC-fp-t77">
-                                <rect key="frame" x="20" y="144" width="335" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vZC-fp-t77">
+                                <rect key="frame" x="20" y="144" width="335" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wp0-aM-mI1">
-                                <rect key="frame" x="20" y="513" width="335" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wp0-aM-mI1">
+                                <rect key="frame" x="20" y="526" width="335" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -43,7 +43,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2ia-JL-ipd"/>
                                     <barButtonItem systemItem="camera" id="Bzt-Ze-bRJ">
                                         <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="aCW-c7-0nE"/>
+                                            <action selector="getAnImageFromCamera:" destination="BYZ-38-t0r" id="aCW-c7-0nE"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="DlP-v5-grH"/>
@@ -58,20 +58,24 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="CfJ-Ry-Jwm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="C7b-KT-Phm"/>
-                            <constraint firstItem="bgU-fP-rzc" firstAttribute="top" secondItem="CfJ-Ry-Jwm" secondAttribute="bottom" id="Csa-nl-ych"/>
+                            <constraint firstItem="CfJ-Ry-Jwm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="62m-AB-T2L"/>
+                            <constraint firstItem="CfJ-Ry-Jwm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="D0j-Gz-cn5"/>
                             <constraint firstItem="bgU-fP-rzc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="HlQ-nA-sPj"/>
+                            <constraint firstItem="CfJ-Ry-Jwm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JFu-J9-eUl"/>
                             <constraint firstItem="Wp0-aM-mI1" firstAttribute="width" secondItem="vZC-fp-t77" secondAttribute="width" id="JVk-tJ-FSB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wp0-aM-mI1" secondAttribute="trailing" constant="20" id="NxB-pL-4Rs"/>
                             <constraint firstItem="Wp0-aM-mI1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VWv-Kc-agn"/>
                             <constraint firstItem="bgU-fP-rzc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wvf-k4-3Nq"/>
-                            <constraint firstItem="vZC-fp-t77" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="XXP-Rz-h0I"/>
+                            <constraint firstItem="vZC-fp-t77" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="XXP-Rz-h0I">
+                                <variation key="heightClass=compact" constant="20"/>
+                            </constraint>
                             <constraint firstItem="bgU-fP-rzc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Xn8-xe-OVg"/>
+                            <constraint firstItem="CfJ-Ry-Jwm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Xp9-93-48P"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vZC-fp-t77" secondAttribute="trailing" constant="20" id="a79-Hx-IK4"/>
-                            <constraint firstItem="bgU-fP-rzc" firstAttribute="top" secondItem="Wp0-aM-mI1" secondAttribute="bottom" constant="80" id="doo-dU-ugd"/>
+                            <constraint firstItem="bgU-fP-rzc" firstAttribute="top" secondItem="Wp0-aM-mI1" secondAttribute="bottom" constant="80" id="doo-dU-ugd">
+                                <variation key="heightClass=compact" constant="20"/>
+                            </constraint>
                             <constraint firstItem="vZC-fp-t77" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="icZ-Ya-RWo"/>
-                            <constraint firstItem="CfJ-Ry-Jwm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jAQ-Er-n48"/>
-                            <constraint firstItem="CfJ-Ry-Jwm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="re4-Ib-cBe"/>
                             <constraint firstItem="Wp0-aM-mI1" firstAttribute="height" secondItem="vZC-fp-t77" secondAttribute="height" id="zfl-4l-c48"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -81,12 +85,13 @@
                         <outlet property="bottomTextField" destination="Wp0-aM-mI1" id="NVI-fA-xoU"/>
                         <outlet property="cameraButton" destination="Bzt-Ze-bRJ" id="7rB-6z-zck"/>
                         <outlet property="imageView" destination="CfJ-Ry-Jwm" id="sxJ-6S-Ug3"/>
+                        <outlet property="toolBar" destination="bgU-fP-rzc" id="Fqt-Tr-pua"/>
                         <outlet property="topTextField" destination="vZC-fp-t77" id="kZn-aY-wMU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1085.5999999999999" y="129.98500749625188"/>
+            <point key="canvasLocation" x="890" y="129"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Smx-qZ-Fc7">

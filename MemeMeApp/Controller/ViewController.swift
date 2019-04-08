@@ -6,14 +6,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var toolBar: UIToolbar!
     
-    // is there any other convenient way to customize the text in text field?
-    // need to play with this in order to make it perfect
     let textAttributes: [NSAttributedString.Key: Any] = [
         .strokeColor: UIColor.black,
-        .strokeWidth: 3.0,
+        .strokeWidth: -2.0,
         .foregroundColor: UIColor.white,
-        // TODO: find the "Impact" Font - requirements
+        // TODO: find the "Impact" Font for the version 2
         .font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
     ]
     
@@ -22,7 +21,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // these items should be disabled until it makes sense to become active
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(clearImage))
         navigationItem.title = "MemeMe"
@@ -31,29 +29,21 @@ class ViewController: UIViewController {
         topTextField.delegate = self
         bottomTextField.delegate = self
         
-        
-        // TODO: make it all CAPS
         topTextField.text = "TOP"
         topTextField.defaultTextAttributes = textAttributes
         topTextField.textAlignment = .center
-        topTextField.layer.backgroundColor = UIColor.clear.cgColor
-        //topTextField.borderStyle = .none
         
         bottomTextField.text = "BOTTOM"
         bottomTextField.defaultTextAttributes = textAttributes
         bottomTextField.textAlignment = .center
     }
     
-    func setNavigationBar() {
-        
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
         subscribeToKeyboardNotifications()
+        configureBarButtonItems()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,25 +60,24 @@ class ViewController: UIViewController {
         present(pickerController, animated: true, completion: nil)
     }
     
-    @IBAction func pickAnImageFromCamera(_ sender: Any) {
+    @IBAction func getAnImageFromCamera(_ sender: Any) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.sourceType = .camera
         present(pickerController, animated: true, completion: nil)
     }
     
-    //TODO: - Make it correct
     func configureBarButtonItems() {
         if imageView.image == nil {
             navigationItem.leftBarButtonItem?.isEnabled = false
             navigationItem.rightBarButtonItem?.isEnabled = false
+        } else {
+            navigationItem.leftBarButtonItem?.isEnabled = true
+            navigationItem.rightBarButtonItem?.isEnabled = true
         }
     }
     
     //MARK: - Keyboard adjustments
-    // how does that guy handle this. I think I need deeper understanding of notifications
-    // how not to move view when user taps the top text field???
-    
     func subscribeToKeyboardNotifications() {
         
         NotificationCenter.default.addObserver(
@@ -128,23 +117,21 @@ class ViewController: UIViewController {
     }
     
     func getKeyboardHeight(_ notification: Notification) -> CGFloat {
-        
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
     
     //MARK: Saving Meme
-    
     func save() {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
         memes.append(meme)
-        
     }
     
     func generateMemedImage() -> UIImage {
         
-        // TODO: Hide toolbar and navbar
+        navigationController?.isNavigationBarHidden = true
+        toolBar.isHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -152,14 +139,15 @@ class ViewController: UIViewController {
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        // TODO: Show toolbar and navbar
+        navigationController?.isNavigationBarHidden = false
+        toolBar.isHidden = false
         
         return memedImage
     }
     
     @objc func shareImage() {
-        // need to check for image to share
-        let defaultText = "Look at this awesome meme"
+        
+        let defaultText = "Look at this awesome meme!"
         let image = generateMemedImage()
         
         let activityController = UIActivityViewController(activityItems: [defaultText, image], applicationActivities: [])
@@ -167,15 +155,14 @@ class ViewController: UIViewController {
         activityController.completionWithItemsHandler = { (actionType, completed, returnedItems, activityError) in
             if !completed {
                 return
-                
             } else {
                 self.save()
-                print(self.memes)
             }
         }
         
-        // without this code iPad crashes - needs to be tested
-        //activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        // for iPad
+        activityController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        
         self.present(activityController, animated: true, completion: nil)
     }
     
@@ -184,21 +171,9 @@ class ViewController: UIViewController {
         bottomTextField.text = "BOTTOM"
         topTextField.text = "TOP"
         
+        configureBarButtonItems()
     }
-    
 }
-
-// add shared button with activity view that allow sharing +/-
-// enable shared button until meme is finished (check imageView has image)
-
-//generate a memed image
-//define an instance of the ActivityViewController
-//pass the ActivityViewController a memedImage as an activity item
-//present the ActivityViewController
-//call save meme method in completionHandler of ActivityVC
-//dismiss Activity View?
-//allow to save image in galery in plist
-
 
 extension ViewController: UITextFieldDelegate {
     
@@ -208,6 +183,11 @@ extension ViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        textField.text = (textField.text! as NSString).replacingCharacters(in: range, with: string.uppercased())
         return false
     }
 }
