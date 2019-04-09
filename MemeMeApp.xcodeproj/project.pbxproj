@@ -115,6 +115,7 @@
 				TargetAttributes = {
 					5BA6AFB42240992200A89F44 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -311,7 +312,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kabishau.MemeMeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -329,7 +330,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kabishau.MemeMeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -1,7 +1,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
@@ -25,17 +25,8 @@ class ViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(clearImage))
         navigationItem.title = "MemeMe"
         
-        
-        topTextField.delegate = self
-        bottomTextField.delegate = self
-        
-        topTextField.text = "TOP"
-        topTextField.defaultTextAttributes = textAttributes
-        topTextField.textAlignment = .center
-        
-        bottomTextField.text = "BOTTOM"
-        bottomTextField.defaultTextAttributes = textAttributes
-        bottomTextField.textAlignment = .center
+        configureTextfield(topTextField, defaultText: "TOP")
+        configureTextfield(bottomTextField, defaultText: "BOTTOM")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,18 +44,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-        present(pickerController, animated: true, completion: nil)
+        presentImagePicker(with: .photoLibrary)
     }
     
     @IBAction func getAnImageFromCamera(_ sender: Any) {
+        presentImagePicker(with: .camera)
+    }
+    
+    func presentImagePicker(with sourceType: UIImagePickerController.SourceType) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
-        pickerController.sourceType = .camera
+        pickerController.sourceType = sourceType
         present(pickerController, animated: true, completion: nil)
+    }
+    
+    func configureTextfield(_ textfield: UITextField, defaultText: String) {
+        textfield.delegate = self
+        textfield.defaultTextAttributes = textAttributes
+        textfield.textAlignment = .center
+        textfield.text = defaultText
     }
     
     func configureBarButtonItems() {
@@ -122,25 +120,26 @@ class ViewController: UIViewController {
         return keyboardSize.cgRectValue.height
     }
     
-    //MARK: Saving Meme
-    func save() {
+    func saveMeme() {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
         memes.append(meme)
     }
     
+    func hideBars(_ isHidden: Bool) {
+        navigationController?.isNavigationBarHidden = isHidden
+        toolBar.isHidden = isHidden
+    }
+    
     func generateMemedImage() -> UIImage {
         
-        navigationController?.isNavigationBarHidden = true
-        toolBar.isHidden = true
+        hideBars(true)
         
-        // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        navigationController?.isNavigationBarHidden = false
-        toolBar.isHidden = false
+        hideBars(false)
         
         return memedImage
     }
@@ -156,7 +155,7 @@ class ViewController: UIViewController {
             if !completed {
                 return
             } else {
-                self.save()
+                self.saveMeme()
             }
         }
         
@@ -183,11 +182,6 @@ extension ViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        return false
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        textField.text = (textField.text! as NSString).replacingCharacters(in: range, with: string.uppercased())
         return false
     }
 }
