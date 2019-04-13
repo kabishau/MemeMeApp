@@ -122,7 +122,10 @@ class ViewController: UIViewController {
     
     func saveMeme() {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: generateMemedImage())
-        memes.append(meme)
+        
+        // saving to AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     func hideBars(_ isHidden: Bool) {
