@@ -15,6 +15,7 @@
 		5BA6AFC32240992500A89F44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA6AFC12240992500A89F44 /* LaunchScreen.storyboard */; };
 		6B8C8B5A2262499000209FBB /* MemeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C8B592262499000209FBB /* MemeTableViewController.swift */; };
 		6B8C8B5C226249B400209FBB /* MemeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8C8B5B226249B400209FBB /* MemeCollectionViewController.swift */; };
+		6B8C8B5E22624CDF00209FBB /* Comments in Resources */ = {isa = PBXBuildFile; fileRef = 6B8C8B5D22624CDF00209FBB /* Comments */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5BA6AFC42240992500A89F44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B8C8B592262499000209FBB /* MemeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTableViewController.swift; sourceTree = "<group>"; };
 		6B8C8B5B226249B400209FBB /* MemeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeCollectionViewController.swift; sourceTree = "<group>"; };
+		6B8C8B5D22624CDF00209FBB /* Comments */ = {isa = PBXFileReference; lastKnownFileType = text; path = Comments; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				5BA6AFBF2240992500A89F44 /* Assets.xcassets */,
 				5BA6AFC12240992500A89F44 /* LaunchScreen.storyboard */,
 				5BA6AFC42240992500A89F44 /* Info.plist */,
+				6B8C8B5D22624CDF00209FBB /* Comments */,
 			);
 			path = MemeMeApp;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B8C8B5E22624CDF00209FBB /* Comments in Resources */,
 				5BA6AFC32240992500A89F44 /* LaunchScreen.storyboard in Resources */,
 				5BA6AFC02240992500A89F44 /* Assets.xcassets in Resources */,
 				5BA6AFBE2240992200A89F44 /* Main.storyboard in Resources */,

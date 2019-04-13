@@ -6,6 +6,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    //TODO: Redo to use toolbar programmatically
     @IBOutlet weak var toolBar: UIToolbar!
     
     let textAttributes: [NSAttributedString.Key: Any] = [
