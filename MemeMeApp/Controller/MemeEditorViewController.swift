@@ -1,6 +1,6 @@
 import UIKit
 
-class ViewController: UIViewController {
+class MemeEditorViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -159,7 +159,8 @@ class ViewController: UIViewController {
             if !completed {
                 return
             } else {
-                self.saveMeme()
+                self.saveMeme()                
+                self.navigationController?.popViewController(animated: true)
             }
         }
         
@@ -178,7 +179,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITextFieldDelegate {
+extension MemeEditorViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
@@ -191,7 +192,7 @@ extension ViewController: UITextFieldDelegate {
 }
 
 // navigation delegate doesn't have any required methods
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension MemeEditorViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -199,7 +200,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             imageView.image = image
         }
         
-        dismiss(animated: true, completion: { print("picked") })
+        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

@@ -9,3 +9,5 @@ MemeVC - for creation and editing meme -> New Meme or select existing one
 When Editing and New should be the option to just Save it without Sending
 Sending saves meme by default
 
+Need Edit and Delete implementation for saved memes
+
