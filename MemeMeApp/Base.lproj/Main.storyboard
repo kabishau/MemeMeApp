@@ -91,7 +91,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2938" y="1233"/>
+            <point key="canvasLocation" x="2718" y="1609"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="iBQ-Mg-GGc">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="6r3-ur-9SX" customClass="DetailViewController" customModule="MemeMeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CzW-eZ-FwN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ViH-6H-V5f">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="os2-Nc-Ii5" firstAttribute="trailing" secondItem="ViH-6H-V5f" secondAttribute="trailing" id="F1X-SR-iQV"/>
+                            <constraint firstItem="os2-Nc-Ii5" firstAttribute="bottom" secondItem="ViH-6H-V5f" secondAttribute="bottom" id="RCH-Rp-bfJ"/>
+                            <constraint firstItem="ViH-6H-V5f" firstAttribute="top" secondItem="os2-Nc-Ii5" secondAttribute="top" id="Ve9-MH-3Au"/>
+                            <constraint firstItem="ViH-6H-V5f" firstAttribute="leading" secondItem="os2-Nc-Ii5" secondAttribute="leading" id="qGf-NP-Rn5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="os2-Nc-Ii5"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="ViH-6H-V5f" id="Msd-JM-P3R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lTc-U5-z6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2718" y="881"/>
         </scene>
         <!--Meme Table View Controller-->
         <scene sceneID="KoM-Kk-qrI">
