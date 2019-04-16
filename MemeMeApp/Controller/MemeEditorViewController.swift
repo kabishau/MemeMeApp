@@ -170,6 +170,7 @@ class MemeEditorViewController: UIViewController {
         self.present(activityController, animated: true, completion: nil)
     }
     
+    //TODO: Should dismiss vc; how about clearing?; how about saving draft?
     @objc func clearImage() {
         self.imageView.image = nil
         bottomTextField.text = "BOTTOM"
