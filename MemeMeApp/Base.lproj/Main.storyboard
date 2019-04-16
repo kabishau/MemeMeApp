@@ -239,7 +239,7 @@
         <scene sceneID="3LP-Yc-gRu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kS0-hd-J5o" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="table_icon" id="ZQ9-UD-9Ie"/>
+                    <tabBarItem key="tabBarItem" title="" image="table_icon" id="ZQ9-UD-9Ie"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bNy-F8-opZ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -258,7 +258,7 @@
         <scene sceneID="qzV-E0-KXn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FFf-Hs-gat" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" selectedImage="collection_icon" id="nOV-v8-BvS"/>
+                    <tabBarItem key="tabBarItem" title="" image="collection_icon" id="nOV-v8-BvS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ftf-Bs-a4g">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
