@@ -23,7 +23,7 @@ class MemeEditorViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(clearImage))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         navigationItem.title = "MemeMe"
         
         configureTextfield(topTextField, defaultText: "TOP")
@@ -69,10 +69,10 @@ class MemeEditorViewController: UIViewController {
     func configureBarButtonItems() {
         if imageView.image == nil {
             navigationItem.leftBarButtonItem?.isEnabled = false
-            navigationItem.rightBarButtonItem?.isEnabled = false
+            //navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
             navigationItem.leftBarButtonItem?.isEnabled = true
-            navigationItem.rightBarButtonItem?.isEnabled = true
+            //navigationItem.rightBarButtonItem?.isEnabled = true
         }
     }
     
@@ -171,12 +171,17 @@ class MemeEditorViewController: UIViewController {
     }
     
     //TODO: Should dismiss vc; how about clearing?; how about saving draft?
-    @objc func clearImage() {
-        self.imageView.image = nil
-        bottomTextField.text = "BOTTOM"
-        topTextField.text = "TOP"
-        
-        configureBarButtonItems()
+//    @objc func clearImage() {
+//        self.imageView.image = nil
+//        bottomTextField.text = "BOTTOM"
+//        topTextField.text = "TOP"
+//
+//        configureBarButtonItems()
+//    }
+    
+    @objc func cancelTapped() {
+        //dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
 }
 
