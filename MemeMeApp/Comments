@@ -11,3 +11,8 @@ Sending saves meme by default
 
 Need Edit and Delete implementation for saved memes
 
+TODO
+present MemeEditor Modally, cancel button dismiss modal view, share button save/send meme
+tab bar - remove names under icons
+
+
