@@ -28,6 +28,8 @@ class MemeEditorViewController: UIViewController {
         
         configureTextfield(topTextField, defaultText: "TOP")
         configureTextfield(bottomTextField, defaultText: "BOTTOM")
+        
+        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

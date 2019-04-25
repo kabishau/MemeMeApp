@@ -24,6 +24,7 @@ class MemeTableViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        tabBarController?.tabBar.isHidden = false
     }
     
     @objc func addButtonTapped() {
@@ -31,6 +32,8 @@ class MemeTableViewController: UIViewController {
             return
         }
         navigationController?.pushViewController(memeEditorViewController, animated: true)
+        
+        //present(memeEditorViewController, animated: true, completion: nil)
     }
 }
 
