@@ -1,18 +1,16 @@
-TabBarVc can be added at the end
-Create TableVC
-Create CollectionVC
-
-Cells for both should have a layout of image and two labels?
-
 MemeVC - for creation and editing meme -> New Meme or select existing one
 
 When Editing and New should be the option to just Save it without Sending
-Sending saves meme by default
-
-Need Edit and Delete implementation for saved memes
 
 TODO
 present MemeEditor Modally, cancel button dismiss modal view, share button save/send meme
-tab bar - remove names under icons
 
-table view - insert instead of reload data
+table/collection view - insert instead of reload data
+
+present new meme modally in navigation vc
+
+extend detail view to display all the fields or present editor modally if edit tapped
+
+share, delete and edit functionality in table view and collection view
+
+
