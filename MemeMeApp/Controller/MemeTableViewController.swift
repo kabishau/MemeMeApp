@@ -31,9 +31,10 @@ class MemeTableViewController: UIViewController {
         guard let memeEditorViewController = storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as? MemeEditorViewController else {
             return
         }
-        navigationController?.pushViewController(memeEditorViewController, animated: true)
         
-        //present(memeEditorViewController, animated: true, completion: nil)
+        let navigationContoller = UINavigationController(rootViewController: memeEditorViewController)
+        present(navigationContoller, animated: true, completion: nil)
+        
     }
 }
 

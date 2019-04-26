@@ -162,7 +162,7 @@ class MemeEditorViewController: UIViewController {
                 return
             } else {
                 self.saveMeme()                
-                self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
             }
         }
         
@@ -182,8 +182,7 @@ class MemeEditorViewController: UIViewController {
 //    }
     
     @objc func cancelTapped() {
-        //dismiss(animated: true, completion: nil)
-        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
     }
 }
 

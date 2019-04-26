@@ -32,7 +32,8 @@ class MemeCollectionViewController: UIViewController {
         guard let memeEditorViewController = storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as? MemeEditorViewController else {
             return
         }
-        navigationController?.pushViewController(memeEditorViewController, animated: true)
+        let navigationContoller = UINavigationController(rootViewController: memeEditorViewController)
+        present(navigationContoller, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
