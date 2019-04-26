@@ -6,7 +6,7 @@ class MemeEditorViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    //TODO: Redo to use toolbar programmatically
+    //TODO: Redo to use toolbar programmatically?
     @IBOutlet weak var toolBar: UIToolbar!
     
     let textAttributes: [NSAttributedString.Key: Any] = [
@@ -17,6 +17,7 @@ class MemeEditorViewController: UIViewController {
         .font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
     ]
     
+    //TODO: - why do I need in here
     var memes = [Meme]()
     
     override func viewDidLoad() {
@@ -24,12 +25,11 @@ class MemeEditorViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
-        navigationItem.title = "MemeMe"
+        navigationItem.title = "New Meme"
         
         configureTextfield(topTextField, defaultText: "TOP")
         configureTextfield(bottomTextField, defaultText: "BOTTOM")
         
-        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
