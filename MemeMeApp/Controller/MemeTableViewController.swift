@@ -37,18 +37,7 @@ class MemeTableViewController: UIViewController {
     }
 }
 
-extension MemeTableViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return memes.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = memes[indexPath.row].topText
-        cell.imageView?.image = memes[indexPath.row].originalImage
-        return cell
-    }
+extension MemeTableViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -58,4 +47,20 @@ extension MemeTableViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     
+}
+
+extension MemeTableViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        //cell.textLabel?.text = memes[indexPath.row].topText
+        cell.topLabel.text = memes[indexPath.row].topText
+        cell.bottomLabel.text = memes[indexPath.row].bottomText
+        cell.memeImage.image = memes[indexPath.row].originalImage
+        return cell
+    }
 }

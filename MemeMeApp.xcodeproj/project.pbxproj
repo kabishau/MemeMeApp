@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B02AB3E2272ABD000FE7525 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B02AB3D2272ABD000FE7525 /* TableViewCell.swift */; };
 		5B0E2E1F2262ECE4008A9BEE /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0E2E1E2262ECE4008A9BEE /* DetailViewController.swift */; };
 		5B27A70622486D3C008862C0 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B27A70522486D3C008862C0 /* Meme.swift */; };
 		5BA6AFB92240992200A89F44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA6AFB82240992200A89F44 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B02AB3D2272ABD000FE7525 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		5B0E2E1E2262ECE4008A9BEE /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		5B27A70522486D3C008862C0 /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		5BA6AFB52240992200A89F44 /* MemeMeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				5BB257BB22656995004D6DDB /* CollectionViewCell.swift */,
+				5B02AB3D2272ABD000FE7525 /* TableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B27A70622486D3C008862C0 /* Meme.swift in Sources */,
+				5B02AB3E2272ABD000FE7525 /* TableViewCell.swift in Sources */,
 				5BA6AFBB2240992200A89F44 /* MemeEditorViewController.swift in Sources */,
 				6B8C8B5C226249B400209FBB /* MemeCollectionViewController.swift in Sources */,
 				5BB257BC22656995004D6DDB /* CollectionViewCell.swift in Sources */,
