@@ -54,7 +54,7 @@ extension MemeCollectionViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
-        cell.imageView.image = memes[indexPath.item].originalImage
+        cell.imageView.image = memes[indexPath.item].memedImage
         return cell
     }
     
