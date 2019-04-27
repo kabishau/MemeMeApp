@@ -228,7 +228,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="8jT-nB-Ynx" customClass="CollectionViewCell" customModule="MemeMeApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCell" id="8jT-nB-Ynx" customClass="CollectionViewCell" customModule="MemeMeApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -265,7 +265,6 @@
                     <navigationItem key="navigationItem" id="BxF-vR-3uv"/>
                     <connections>
                         <outlet property="collectionView" destination="og3-1G-akH" id="4Tx-fn-63x"/>
-                        <outlet property="flowLayout" destination="D1C-ap-6qT" id="uQi-Sa-LzY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FdO-5M-9ri" userLabel="First Responder" sceneMemberID="firstResponder"/>
