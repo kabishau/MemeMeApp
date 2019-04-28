@@ -6,19 +6,14 @@ class MemeEditorViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    //TODO: Redo to use toolbar programmatically?
     @IBOutlet weak var toolBar: UIToolbar!
     
     let textAttributes: [NSAttributedString.Key: Any] = [
         .strokeColor: UIColor.black,
         .strokeWidth: -2.0,
         .foregroundColor: UIColor.white,
-        // TODO: find the "Impact" Font for the version 2
         .font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!
     ]
-    
-    //TODO: - why do I need in here
-    //var memes = [Meme]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,10 +66,8 @@ class MemeEditorViewController: UIViewController {
     func configureBarButtonItems() {
         if imageView.image == nil {
             navigationItem.leftBarButtonItem?.isEnabled = false
-            //navigationItem.rightBarButtonItem?.isEnabled = false
         } else {
             navigationItem.leftBarButtonItem?.isEnabled = true
-            //navigationItem.rightBarButtonItem?.isEnabled = true
         }
     }
     
@@ -176,6 +169,7 @@ class MemeEditorViewController: UIViewController {
     @objc func cancelTapped() {
         dismiss(animated: true, completion: nil)
     }
+    
 }
 
 extension MemeEditorViewController: UITextFieldDelegate {

@@ -36,7 +36,6 @@ class MemeCollectionViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //TODO: not efficient to reload
         collectionView.reloadData()
         tabBarController?.tabBar.isHidden = false
     }
@@ -77,6 +76,7 @@ extension MemeCollectionViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension MemeCollectionViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let detailViewController = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
         detailViewController.memedImage = memes[indexPath.item].memedImage
