@@ -38,6 +38,7 @@ class MemeCollectionViewController: UIViewController {
         
         //TODO: not efficient to reload
         collectionView.reloadData()
+        tabBarController?.tabBar.isHidden = false
     }
 }
 
