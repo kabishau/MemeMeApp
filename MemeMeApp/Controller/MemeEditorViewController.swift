@@ -18,7 +18,7 @@ class MemeEditorViewController: UIViewController {
     ]
     
     //TODO: - why do I need in here
-    var memes = [Meme]()
+    //var memes = [Meme]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,6 +142,7 @@ class MemeEditorViewController: UIViewController {
         
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        imageView.backgroundColor = .white
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
@@ -157,7 +158,7 @@ class MemeEditorViewController: UIViewController {
         
         let activityController = UIActivityViewController(activityItems: [defaultText, image], applicationActivities: [])
         
-        activityController.completionWithItemsHandler = { (actionType, completed, returnedItems, activityError) in
+        activityController.completionWithItemsHandler = { (_, completed, _, _) in
             if !completed {
                 return
             } else {
@@ -171,15 +172,6 @@ class MemeEditorViewController: UIViewController {
         
         self.present(activityController, animated: true, completion: nil)
     }
-    
-    //TODO: Should dismiss vc; how about clearing?; how about saving draft?
-//    @objc func clearImage() {
-//        self.imageView.image = nil
-//        bottomTextField.text = "BOTTOM"
-//        topTextField.text = "TOP"
-//
-//        configureBarButtonItems()
-//    }
     
     @objc func cancelTapped() {
         dismiss(animated: true, completion: nil)
